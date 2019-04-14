@@ -82,7 +82,7 @@ def data():
 
 
 # #Instead of All data, here we are just taking first 1000 data
-	X = initialpc_and_energy[0:500,:]
+	X = initialpc_and_energy[0:20000,:]
 	train, test = train_test_split(X,train_size=0.6, test_size=0.4, random_state=42)
 
 

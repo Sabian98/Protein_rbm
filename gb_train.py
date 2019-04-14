@@ -12,10 +12,10 @@ from tfrbm import  GBRBM
 
 train_x,test_x=prot2.data()
 
-gbrbm1 = GBRBM(n_visible=222, n_hidden=300, learning_rate=0.3, momentum=0.95)
-gbrbm2 = GBRBM(n_visible=300, n_hidden=100, learning_rate=0.3, momentum=0.95)
-gbrbm3 = GBRBM(n_visible=100, n_hidden=8, learning_rate=0.3, momentum=0.95)
-gbrbm4 = GBRBM(n_visible=8, n_hidden=2, learning_rate=0.3, momentum=0.95)
+gbrbm1 = GBRBM(n_visible=222, n_hidden=300, learning_rate=0.1, momentum=0.95)
+gbrbm2 = GBRBM(n_visible=300, n_hidden=100, learning_rate=0.1, momentum=0.95)
+gbrbm3 = GBRBM(n_visible=100, n_hidden=8, learning_rate=0.1, momentum=0.95)
+gbrbm4 = GBRBM(n_visible=8, n_hidden=4, learning_rate=0.1, momentum=0.95)
 # gbrbm5 = GBRBM(n_visible=8, n_hidden=6, learning_rate=0.3, momentum=0.95)
 
 
@@ -91,4 +91,7 @@ tr2=gbrbm2.transform(tr1)
 tr3=gbrbm3.transform(tr2)
 tr4=gbrbm4.transform(tr3)
 # tr5=gbrbm5.transform(tr4)
-print (tr4[0:23])
+# print (tr4[0:530])
+plt.scatter(tr4[:,0],tr4[:,1],label= "stars", color= "red",
+            marker= "*", s=3)
+plt.show()
