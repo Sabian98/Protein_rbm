@@ -18,6 +18,7 @@ class RBM(object):
         self.rbm_vb = tf.placeholder(tf.float32,[self.n_input])
         self.rbm_hb = tf.placeholder(tf.float32,[self.n_hidden])
 
+
         # variables
         # The weights are initialized to small random values chosen from a zero-mean Gaussian with a
         # standard deviation of about 0.01. It is usually helpful to initialize the bias of visible unit
@@ -93,7 +94,7 @@ class RBM(object):
     def transform(self, batch_x):
         return self.sess.run(self.h_sample, {self.x: batch_x, self.rbm_w: self.o_w,
                                              self.rbm_vb: self.o_vb, self.rbm_hb: self.o_hb})
-
+        # return self.sess.run(self.compute_hidden, feed_dict={self.x: batch_x})
     def restore_weights(self, path):
         saver = tf.train.Saver({self.layer_names[0]: self.weights['w'],
                                 self.layer_names[1]: self.weights['vb'],

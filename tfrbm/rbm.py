@@ -13,22 +13,20 @@ class RBM:
                  learning_rate=0.01,
                  momentum=0.95,
                  xavier_const=1.0,
-                 err_function='mse',
-                 use_tqdm=False,
-                 # DEPRECATED:
-                 tqdm=None):
+                 err_function='mse'
+                ):
         if not 0.0 <= momentum <= 1.0:
             raise ValueError('momentum should be in range [0, 1]')
 
         if err_function not in {'mse', 'cosine'}:
             raise ValueError('err_function should be either \'mse\' or \'cosine\'')
 
-        self._use_tqdm = use_tqdm
-        self._tqdm = None
+        # self._use_tqdm = use_tqdm
+        # self._tqdm = None
 
-        if use_tqdm or tqdm is not None:
-            from tqdm import tqdm
-            self._tqdm = tqdm
+        # if use_tqdm or tqdm is not None:
+        #     from tqdm import tqdm
+        #     self._tqdm = tqdm
 
         self.n_visible = n_visible
         self.n_hidden = n_hidden
@@ -117,8 +115,8 @@ class RBM:
         errs = []
 
         for e in range(n_epoches):
-            if verbose and not self._use_tqdm:
-                print('Epoch: {:d}'.format(e))
+            # if verbose and not self._use_tqdm:
+            #     print('Epoch: {:d}'.format(e))
 
             epoch_errs = np.zeros((n_batches,))
             epoch_errs_ptr = 0
@@ -129,8 +127,8 @@ class RBM:
 
             r_batches = range(n_batches)
 
-            if verbose and self._use_tqdm:
-                r_batches = self._tqdm(r_batches, desc='Epoch: {:d}'.format(e), ascii=True, file=sys.stdout)
+            # if verbose and self._use_tqdm:
+            #     r_batches = self._tqdm(r_batches, desc='Epoch: {:d}'.format(e), ascii=True, file=sys.stdout)
 
             for b in r_batches:
                 batch_x = data_x_cpy[b * batch_size:(b + 1) * batch_size]
@@ -141,12 +139,9 @@ class RBM:
 
             if verbose:
                 err_mean = epoch_errs.mean()
-                if self._use_tqdm:
-                    self._tqdm.write('Train error: {:.4f}'.format(err_mean))
-                    self._tqdm.write('')
-                else:
-                    print('Train error: {:.4f}'.format(err_mean))
-                    print('')
+
+                print('Train error: {:.4f}'.format(err_mean))
+                print('')
                 sys.stdout.flush()
 
             errs = np.hstack([errs, epoch_errs])
