@@ -37,7 +37,7 @@ gbrbm1.save_weights('./out/rbmw1.chp','w1')
 
 #//
 print('second rbm')
-for i in range(50):
+for i in range(100):
   for j in range(iterations):
 
     data_xs=get_random_block_from_data(train_x,64)
@@ -48,7 +48,7 @@ gbrbm2.save_weights('./out/rbmw2.chp','w2')
 
 
 print('third rbm')
-for i in range(50):
+for i in range(100):
   for j in range(iterations):
 
     data_xs=get_random_block_from_data(train_x,64)
@@ -60,7 +60,7 @@ gbrbm3.save_weights('./out/rbmw3.chp','w3')
 
 
 print('fourth  rbm')
-for i in range(50):
+for i in range(100):
   for j in range(iterations):
 
     data_xs=get_random_block_from_data(train_x,64)

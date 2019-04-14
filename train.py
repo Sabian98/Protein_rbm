@@ -62,7 +62,7 @@ for i in range(FLAGS.epochs):
     # batch_xs, batch_ys = mnist.train.next_batch(FLAGS.batchsize)
     # Transform features with first rbm for second rbm
     data_xs = get_random_block_from_data(train_x, 64)
-    batch_xs = rbmobject1.transform(data_xs)
+    batch_xs = rbmobject1.transform(data_xs)#being transformed into funny things
     print (batch_xs[0])
     rbmobject2.partial_fit(batch_xs)
   #print(rbmobject2.compute_cost(rbmobject1.transform(train_x)))
@@ -113,7 +113,7 @@ for i in range(FLAGS.epochs):
     cost += autoencoder.partial_fit(data_xs)
   # print(cost)
 
-# print(autoencoder.transform(test_x))
+print(autoencoder.transform(test_x))
 #
 #
 #
